@@ -43,8 +43,10 @@ function removeColorCodes(string) {
 
 // Show Help
 function showHelp(additionalText) {
+  var title = new TextComponent(state.color + "§lSuiChat v" + metadata.version + "§r" + (additionalText ? additionalText : "")).setClick("open_url", "https://github.com/suicidejerk/suichat/releases").setHoverValue("§7Click here to see the " + state.color + "§nchangelog§r§7!");
+
   ChatLib.chat("------------------------------------------------------");
-  ChatLib.chat(state.color + "§lSuiChat v" + metadata.version + "§r" + (additionalText ? additionalText : ""));
+  ChatLib.chat(title);
   ChatLib.chat("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
   ChatLib.chat("§nCommands:");
   ChatLib.chat("> §7Display this menu: §a§n.sui help");
@@ -106,7 +108,7 @@ function changeTag(message) {
 }
 
 // Toggle Alt Colors
-function toggleAltColors(message) {
+function toggleAltColors() {
   ChatLib.chat("------------------------------------------------------");
   if (state.altColors) {
     state.altColors = false;
@@ -176,7 +178,7 @@ register("messageSent", (message, event) => {
         changeTag(message);
         break;
       case "toggle":
-        toggleAltColors(message);
+        toggleAltColors();
         break;
       default:
         commandNotFound();
