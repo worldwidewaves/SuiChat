@@ -1,6 +1,6 @@
 import PVObject from "PersistentData";
 
-const metadata = JSON.parse(FileLib.read("./config/ChatTriggers/modules/SuiChat/metadata.json"));
+const metadata = JSON.parse(FileLib.read("SuiChat", "metadata.json"));
 
 const availableColors = {
   black: "§0",
