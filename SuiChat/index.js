@@ -131,8 +131,9 @@ function commandNotFound() {
 register("chat", function (message, event) {
   message = message.replace(/\[.*?\]/, "");
   var args = message.split(" ");
+  console.log(args[1]);
 
-  if (args[1] === state.name) {
+  if (args[0] === state.name || args[1] === state.name || args[0] === (state.name + ":") || args[1] === (state.name + ":")) {
     cancel(event);
 
     var args2 = message.split(":");
