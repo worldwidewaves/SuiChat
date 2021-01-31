@@ -49,8 +49,8 @@ function getLinkedMessage(message) {
 
   for (var i = 0; i < msgArrUnformatted.length; i++) {
     try {
-      new java.net.URL(msgArrUnformatted[i]);
-      partsArr.push(new TextComponent(msgArr[i] + " ").setClick("open_url", msgArrUnformatted[i]).setHoverValue("§bOpen link!"));
+      new java.net.URL(removeColorCodes(msgArrUnformatted[i]));
+      partsArr.push(new TextComponent("§b" + removeColorCodes(msgArr[i]) + " ").setClick("open_url", msgArrUnformatted[i]).setHoverValue("§bOpen link!"));
     } catch (e) {
       partsArr.push(msgArr[i] + " ");
     }
