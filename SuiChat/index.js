@@ -36,9 +36,27 @@ function insensitiveReplace(string, stringToReplace, stringReplacement) {
 
 // Color Code Remover
 function removeColorCodes(string) {
-  var strippedString = string.replace(/\u00A7[0-9A-FK-OR]/ig, "");
-  strippedString = string.replace(/&[0-9A-FK-OR]/ig, "");
-  return strippedString;
+  return string.replace(/[&,§][0-9A-FK-OR]/ig, "");
+}
+
+// Makes links clickable
+function getLinkedMessage(message) {
+  var partsArr = [];
+  var messageUnformatted = removeColorCodes(message);
+
+  var msgArr = message.split(" ");
+  var msgArrUnformatted = messageUnformatted.split(" ");
+
+  for (var i = 0; i < msgArrUnformatted.length; i++) {
+    try {
+      new java.net.URL(msgArrUnformatted[i]);
+      partsArr.push(new TextComponent(msgArr[i] + " ").setClick("open_url", msgArrUnformatted[i]).setHoverValue("§bOpen link!"));
+    } catch (e) {
+      partsArr.push(msgArr[i] + " ");
+    }
+  }
+
+  return partsArr;
 }
 
 // Show Help
@@ -152,7 +170,8 @@ register("chat", function (message, event) {
       messageReal = removeColorCodes(messageReal);
     }
 
-    ChatLib.chat("&r&2Guild > " + state.color + "[" + state.tag + state.color + "] " + name + "&r: &r" + messageReal);
+    var textToSend = "&r&2Guild &2> " + state.color + "[" + state.tag + state.color + "] " + state.color + name + "&r: &r" + messageReal;
+    ChatLib.chat(new Message(getLinkedMessage(textToSend)));
   }
 }).setCriteria("&r&2Guild > ${message}");
 
