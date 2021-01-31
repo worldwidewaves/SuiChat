@@ -77,7 +77,7 @@ function showHelp(additionalText) {
 
 // Change Color
 function changeColor(message) {
-  var tempColor = insensitiveReplace(message, ".sui color ", "");
+  var tempColor = message.toLowerCase().replace(".sui color ", "");
 
   ChatLib.chat("------------------------------------");
   if (tempColor in availableColors) {
@@ -150,7 +150,7 @@ register("chat", function (message, event) {
   message = message.replace(/\[.*?\]/, "");
   var args = message.split(" ");
 
-  if (args[0] === state.name || args[1] === state.name || args[0] === (state.name + ":") || args[1] === (state.name + ":")) {
+  if (args[0].toLowerCase() === state.name.toLowerCase() || args[1].toLowerCase() === state.name.toLowerCase() || args[0].toLowerCase() === (state.name.toLowerCase() + ":") || args[1].toLowerCase() === (state.name.toLowerCase() + ":")) {
     cancel(event);
 
     var args2 = message.split(":");
