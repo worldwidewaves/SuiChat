@@ -3,7 +3,7 @@
   "creator": "Sui",
   "description": "Changes Suibot's name from the bridge to just the user who typed the message",
   "entry": "index.js",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "requires": [
     "PersistentData"
   ]

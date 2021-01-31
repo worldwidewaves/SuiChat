@@ -170,7 +170,16 @@ register("chat", function (message, event) {
       messageReal = removeColorCodes(messageReal);
     }
 
-    var textToSend = "&r&2Guild &2> " + state.color + "[" + state.tag + state.color + "] " + state.color + name + "&r: &r" + messageReal;
+    var nameReal = "";
+    var argsName = name.split(" ");
+    for (var i = 0; i < Object.keys(argsName).length; i++) {
+      nameReal += state.color + argsName[i];
+      if (i + 1 != Object.keys(argsName).length) {
+        nameReal += " ";
+      }
+    }
+
+    var textToSend = "&r&2Guild &2> " + state.color + "[" + state.tag + state.color + "] " + state.color + nameReal + "&r: &r" + messageReal;
     ChatLib.chat(new Message(getLinkedMessage(textToSend)));
   }
 }).setCriteria("&r&2Guild > ${message}");
