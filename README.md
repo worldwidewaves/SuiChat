@@ -1,5 +1,5 @@
 # SuiChat
-ChatTriggers module to make Suibot (instance of [Hypixel's guild chat minecraft-discord-bridge](https://github.com/Senither/hypixel-discord-chat-bridge)) look fancier.
+ChatTriggers module to make Suibot (instance of [Hypixel's guild chat minecraft-discord-bridge](https://github.com/suicidejerk/hypixel-discord-chat-bridge)) look fancier.
 
 ![Example](example.png)
 ![Help](helpMsg.png)
